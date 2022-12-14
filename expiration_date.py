@@ -9,7 +9,10 @@ class ExpirationDate:
                 POST : Deux object de type date
                 RAISES : SyntaxError si expiration_date n'est pas un string de la forme AAAA-MM-DD
                 """
-        self.expiration_date = date.fromisoformat(expiration_date)
+        if expiration_date == "":
+            self.expiration_date = date.today()
+        else:
+            self.expiration_date = date.fromisoformat(expiration_date)
         self.today = date.today()
 
     def get_date(self):
