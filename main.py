@@ -52,6 +52,7 @@ if __name__ == "__main__":
                 response = input(
                     "Voulez-vous encore insérer un aliment ? (si oui : taper oui/si non : taper sur une autre "
                     "touche) ")
+
         elif choice == '4':
             pass
         elif choice == '5':
