@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser = argparse.ArgumentParser(
 args = parser.parse_args()
 
 if __name__ == "__main__":
-    fridge = Fridge({}, "", "", "", "", 0, {}, "")
+    fridge = Fridge({}, "", "", "", "", 0, "", "")
     num = 1
     while True:
         print("1. Encoder son profil alimentaire\n2. Voir son frigo\n3. Ajouter des aliments\n4. Supprimer des "
@@ -59,6 +59,7 @@ if __name__ == "__main__":
         elif choice == '6':
             pass
         elif choice == '7':
+            print("Merci d'avoir utilisé notre application et à bientôt !")
             break
         else:
             print("Choisissez un numéro entre 1 et 7")
