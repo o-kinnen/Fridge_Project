@@ -16,7 +16,7 @@ class Fridge(Food):
                       - Object type int : caloric
                       - Object type dict : students, nutritional_values
                 POST : /
-                """
+        """
         self.content = {}
         self.students = students
         super().__init__(libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
@@ -26,7 +26,7 @@ class Fridge(Food):
 
                 PRE : /
                 POST : - String that represents the contents of the fridge
-                """
+        """
         if self.content == {}:
             return f"The fridge is currently empty"
         else:
@@ -37,7 +37,7 @@ class Fridge(Food):
 
                 PRE : /
                 POST : - String that represents students who share the same fridge
-                """
+        """
         if self.students == {}:
             return f"There are zero students"
         else:
