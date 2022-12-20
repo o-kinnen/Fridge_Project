@@ -1,4 +1,4 @@
-class SyntaxError(Exception):
+class TypeError(Exception):
     print("Elément de type non adéquat.")
 
 
@@ -15,14 +15,14 @@ class Recipe:
                 RAISES : - EmptyError si libelle vaut "".
                          - EmptyError si student est vide.
                          - EmptyError si ingredients est vide.
-                         - SyntaxError si libelle n'est pas un string.
-                         - SyntaxError si student n'est pas une liste.
-                         - SyntaxError si ingredients n'est pas un dictionnaire.
+                         - TypeError si libelle n'est pas un string.
+                         - TypeError si student n'est pas une liste.
+                         - TypeError si ingredients n'est pas un dictionnaire.
                 """
         if libelle == "" or ingredients == {} or student == []:
             raise EmptyError
         if type(libelle) != str or type(ingredients) != dict or type(student) != list:
-            raise SyntaxError
+            raise TypeError
         self.libelle = libelle
         self.ingredients = ingredients
         self.student = student
@@ -42,12 +42,12 @@ class Recipe:
                 PRE : /
                 POST : Un object de type str.
                 RAISES : - EmptyError si food vaut "".
-                         - SyntaxError si food n'est pas de type str.
+                         - TypeError si food n'est pas de type str.
                 """
         if food == "":
             raise EmptyError
         if type(food) != str:
-            raise SyntaxError
+            raise TypeError
         if food in self.ingredients:
             response = f"L'aliment {food} est bien l'un des ingrédients de la recette {self.libelle}."
         else:
