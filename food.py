@@ -4,19 +4,26 @@ from expiration_date import ExpirationDate
 class Food(ExpirationDate):
     """Class representing the food
 
-            Author : Anthony IV
-            Date : December 2022
-            This class allows the student to encode the information of a food
-            """
+    Author : Anthony IV
+    Date : December 2022
+    This class allows the student to encode the information of a food
+    """
 
     def __init__(self, libelle: str, food_type: str, nutriscore: str, origin: str,
                  caloric: int, nutritional_values: dict, expiration_date: str):
-        """This build the food by libelle, food_type, nutriscore, origin, caloric, nutritional_values and expiration_date
+        """This build the food by libelle, food_type, nutriscore, origin, caloric, nutritional_values and
+        expiration_date
 
                 PRE : - Object type string : libelle, food_type, nutriscore, origin and expiration_date
                       - Object type int : caloric
                       - Object type dict : students, nutritional_values
-                POST : /
+                POST : - A object type string
+                RAISE: - SyntaxError if libelle is not a string
+                        - SyntaxError if food_type is not a string
+                        - SyntaxError if nutriscore is not a string
+                        - SyntaxError if origin is not a string
+                        - SyntaxError if caloric is not an integer
+                        - SyntaxError if nutritional_values is not a dictionary
         """
         self.__libelle = libelle
         self.__food_type = food_type
@@ -38,7 +45,7 @@ class Food(ExpirationDate):
         """Returns a representation of the type of food
                 PRE : /
                 POST : - if string in type_food_list : string that represents the type of food
-                               - if not : string error that tells the student to choose the right type of food
+                       - if not : string error that tells the student to choose the right type of food
         """
         type_food_list = ["FRUIT", "VEGETABLE", "DAIRY PRODUCT", "MEAT", "FISH", "DRINK", "FAT", "SWEET PRODUCT",
                           "SALT"]
@@ -53,7 +60,7 @@ class Food(ExpirationDate):
                 PRE : /
                 POST : - if string in nutriscore_list : string that represents the nutriscore of the food
                        - if not : string error that tells the student to choose a valid nutriscore
-                """
+        """
         nutriscore_list = ["A", "B", "C", "D", "E"]
         if self.__nutriscore.upper() in nutriscore_list:
             return f"nutriscore : {self.__nutriscore}"
