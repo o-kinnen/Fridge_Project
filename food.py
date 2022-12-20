@@ -25,6 +25,7 @@ class Food(ExpirationDate):
                         - SyntaxError if caloric is not an integer
                         - SyntaxError if nutritional_values is not a dictionary
         """
+
         self.__libelle = libelle
         self.__food_type = food_type
         self.__nutriscore = nutriscore
@@ -39,6 +40,7 @@ class Food(ExpirationDate):
                 PRE : /
                 POST : String which represents the name of the food
         """
+
         return f"Name of the food : {self.__libelle}"
 
     def get_type(self):
@@ -47,6 +49,7 @@ class Food(ExpirationDate):
                 POST : - if string in type_food_list : string that represents the type of food
                        - if not : string error that tells the student to choose the right type of food
         """
+
         type_food_list = ["FRUIT", "VEGETABLE", "DAIRY PRODUCT", "MEAT", "FISH", "DRINK", "FAT", "SWEET PRODUCT",
                           "SALT"]
         if self.__food_type.upper() in type_food_list:
@@ -61,6 +64,7 @@ class Food(ExpirationDate):
                 POST : - if string in nutriscore_list : string that represents the nutriscore of the food
                        - if not : string error that tells the student to choose a valid nutriscore
         """
+
         nutriscore_list = ["A", "B", "C", "D", "E"]
         if self.__nutriscore.upper() in nutriscore_list:
             return f"nutriscore : {self.__nutriscore}"
@@ -72,6 +76,7 @@ class Food(ExpirationDate):
                 PRE : /
                 POST : - String that represents the origin of the food
         """
+
         return f"the origin of the food : {self.__origin}"
 
     def get_caloric(self):
@@ -79,6 +84,7 @@ class Food(ExpirationDate):
                 PRE : /
                 POST : - String that represents the caloric content of the food
         """
+
         if self.__caloric < 0:
             return "ERROR, please enter a positive value"
         else:
@@ -89,6 +95,7 @@ class Food(ExpirationDate):
                 PRE : /
                 POST : - Dictionary representing the nutritional values of the food
         """
+
         for i in self.__nutritional_values:
             if self.__nutritional_values[i] < 0:
                 return "ERROR"
