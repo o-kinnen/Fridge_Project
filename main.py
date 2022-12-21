@@ -43,7 +43,12 @@ if __name__ == "__main__":
                 nutriscore = input("Entrer le nutriscore de l'aliment: ")
                 origin = input("Entrer l'origine de l'aliment: ")
                 caloric = int(input("Entrer le nombre de calorie de l'aliment: "))
-                nutritional_values = input("Entrer les valeurs nutritives de l'aliment: ")
+                nutritional_values = {}
+                name_nutritional = ["proteine", "lipides", "glucide", "fibre"]
+                for name in name_nutritional:
+                    values = input("Entrer la valeur nutritive " + name + " de l'aliment: ")
+
+                    nutritional_values[name] = values
                 expiration_date = input("Entrer la date de péremption (format AAAA-MM-DD): ")
                 food = Food(libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
                 fridge = Fridge({}, libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
