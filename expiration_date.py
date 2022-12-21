@@ -2,25 +2,34 @@ from datetime import date
 
 
 class FormatError(Exception):
-    print("Date n'est pas du format AAAA-MM-DD.")
+    """Date is not YYYY-MM-DD."""
+    pass
 
 
 class StringError(Exception):
-    print("Date n'est pas un string !")
+    """Date is not a string!"""
+    pass
 
 
 class ExpireError(Exception):
-    print("L'aliment est déjà périmé !")
+    """The food is already expired!"""
+    pass
 
 
 class ExpirationDate:
+    """Class representing expiration date.
+
+        Author : Olivia Kinnen.
+        Date : December 2022.
+        This class defines how many days are left before a food is expired.
+        """
     def __init__(self, expiration_date: str):
-        """Crée une date d'expiration.
+        """Creates an expiry date.
 
                 PRE : /
-                POST : Un object de type date.
-                RAISES : - StringError si expiration_date n'est pas un string.
-                         - FormatError si expiration_date n'est pas un string de la forme AAAA-MM-DD.
+                POST : An object of type date.
+                RAISES : - StringError if expiration_date is not a string.
+                         - FormatError if expiration_date is not a string of the form AAAA-MM-DD.
                 """
         if type(expiration_date) != str:
             raise StringError
@@ -29,11 +38,11 @@ class ExpirationDate:
         self.expiration_date = date.fromisoformat(expiration_date)
 
     def get_date(self):
-        """Renvoie le temps compris entre la date d'expiration et la date du jour.
+        """Returns the time between the expiry date and today’s date.
 
                 PRE : /
-                POST : Un object de type date.
-                RAISE: ExpireError si expiration_date est antérieure à celle du jour.
+                POST : An object of type date.
+                RAISE: ExpireError if expiration_date is earlier than the current one.
                 """
         time = self.expiration_date - date.today()
         if date.today() > self.expiration_date:
@@ -41,10 +50,10 @@ class ExpirationDate:
         return time
 
     def time_count(self):
-        """Renvoie le nombre de jour restant avant la date de péremption.
+        """Returns the number of days remaining before the expiry date.
 
         PRE : /
-        POST : Un object de type int.
+        POST : An object of type int.
         """
         time_day = self.get_date().days
         return time_day
