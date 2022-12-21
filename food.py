@@ -6,7 +6,7 @@ class Food(ExpirationDate):
 
     Author : Anthony IV.
     Date : December 2022.
-    This class allows the student to encode the information of a food.
+    This class allows the student to encode the information of food.
     """
 
     def __init__(self, libelle: str, food_type: str, nutriscore: str, origin: str,

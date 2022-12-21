@@ -21,7 +21,7 @@ class ExpirationDate:
 
         Author : Olivia Kinnen.
         Date : December 2022.
-        This class defines how many days are left before a food is expired.
+        This class defines how many days are left before food is expired.
         """
     def __init__(self, expiration_date: str):
         """Creates an expiry date.
