@@ -10,7 +10,7 @@ class Food(ExpirationDate):
     """
 
     def __init__(self, libelle: str, food_type: str, nutriscore: str, origin: str,
-                 caloric: int, nutritional_values: dict, expiration_date: str):
+                 caloric: int, nutritional_values: dict, expiration_date : str):
         """This build the food by libelle, food_type, nutriscore, origin, caloric, nutritional_values and
         expiration_date
 
@@ -26,12 +26,12 @@ class Food(ExpirationDate):
                         - SyntaxError if nutritional_values is not a dictionary
         """
 
-        self.__libelle = libelle
-        self.__food_type = food_type
-        self.__nutriscore = nutriscore
-        self.__origin = origin
-        self.__caloric = caloric
-        self.__nutritional_values = nutritional_values
+        self.libelle = libelle
+        self.food_type = food_type
+        self.nutriscore = nutriscore
+        self.origin = origin
+        self.caloric = caloric
+        self.nutritional_values = nutritional_values
         ExpirationDate.__init__(self, expiration_date)
 
     def get_lib(self):
@@ -41,7 +41,7 @@ class Food(ExpirationDate):
                 POST : String which represents the name of the food
         """
 
-        return f"Name of the food : {self.__libelle}"
+        return f"Name of the food : {self.libelle}"
 
     def get_type(self):
         """Returns a representation of the type of food
@@ -52,8 +52,8 @@ class Food(ExpirationDate):
 
         type_food_list = ["FRUIT", "VEGETABLE", "DAIRY PRODUCT", "MEAT", "FISH", "DRINK", "FAT", "SWEET PRODUCT",
                           "SALT"]
-        if self.__food_type.upper() in type_food_list:
-            return f"type of food : {self.__food_type}"
+        if self.food_type.upper() in type_food_list:
+            return f"type of food : {self.food_type}"
         else:
             return "ERROR : Choose between fruit, vegetable, dairy product, meat, fish, drink, fat, sweet product or " \
                    "salt "
@@ -66,8 +66,8 @@ class Food(ExpirationDate):
         """
 
         nutriscore_list = ["A", "B", "C", "D", "E"]
-        if self.__nutriscore.upper() in nutriscore_list:
-            return f"nutriscore : {self.__nutriscore}"
+        if self.nutriscore.upper() in nutriscore_list:
+            return f"nutriscore : {self.nutriscore}"
         else:
             return "ERROR : Choose between A, B, C, D or E"
 
@@ -77,7 +77,7 @@ class Food(ExpirationDate):
                 POST : - String that represents the origin of the food
         """
 
-        return f"the origin of the food : {self.__origin}"
+        return f"the origin of the food : {self.origin}"
 
     def get_caloric(self):
         """Returns a caloric representation of the food
@@ -85,10 +85,10 @@ class Food(ExpirationDate):
                 POST : - String that represents the caloric content of the food
         """
 
-        if self.__caloric < 0:
+        if self.caloric < 0:
             return "ERROR, please enter a positive value"
         else:
-            return f"caloric value of the food : {self.__caloric}"
+            return f"caloric value of the food : {self.caloric}"
 
     def get_nutritional_values(self):
         """Returns a representation of the nutritional values of the food
@@ -96,10 +96,10 @@ class Food(ExpirationDate):
                 POST : - Dictionary representing the nutritional values of the food
         """
 
-        for i in self.__nutritional_values:
-            if self.__nutritional_values[i] < 0:
+        for i in self.nutritional_values:
+            if self.nutritional_values[i] < 0:
                 return "ERROR"
-        return self.__nutritional_values
+        return self.nutritional_values
 
     def __str__(self):
         """Return a textual representation of the food
@@ -108,10 +108,10 @@ class Food(ExpirationDate):
         """
 
         return f"Information about the food : \n\n" \
-            f"{self.get_lib()}"\
+            f"{self.get_lib()}\n"\
             f"{self.get_type()}\n" \
             f"{self.get_nutriscore()}\n" \
             f"{self.get_origin()}\n" \
             f"{self.get_caloric()}\n"\
-            f"{self.get_nutritional_values()}\n" \
-            f"expire on {self.expiration_date} and {self.time_count()} day(s) left."
+            f"nutritional values : {self.get_nutritional_values()}\n" \
+            #f"expire on {self.expiration_date} and {self.time_count()} day(s) left."
