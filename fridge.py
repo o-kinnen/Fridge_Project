@@ -47,3 +47,4 @@ class Fridge(Food):
     def add_food(self):
         self.content.append(self.libelle)
         return self.content
+

@@ -66,3 +66,4 @@ class Recipe:
         return f"Information about the recipe {self.libelle} : \n\n" \
             f"Ingrédients : {self.ingredients}\n" \
             f"Student(s) : {self.student}\n"
+

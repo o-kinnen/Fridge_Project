@@ -153,3 +153,4 @@ class FoodProfile(Student):
                   f"Daily Needed Calories : {self.daily_needed_calories()}\n"
 
         return profile
+
