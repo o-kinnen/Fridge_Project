@@ -99,7 +99,7 @@ class Food(ExpirationDate):
         for i in self.__nutritional_values:
             if self.__nutritional_values[i] < 0:
                 return "ERROR."
-        return self.__nutritional_values
+        return f"Nutritional value {self.__nutritional_values}"
 
     def __str__(self):
         """Return a textual representation of the food.
