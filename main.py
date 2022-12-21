@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser = argparse.ArgumentParser(
 args = parser.parse_args()
 
 if __name__ == "__main__":
-    fridge = Fridge({}, "", "", "", "", 0, {}, "")
+    #fridge = Fridge({}, "", "", "", "", 0, {}, "")
     num = 1
     while True:
         print("1. Encoder son profil alimentaire\n2. Voir son frigo\n3. Ajouter des aliments\n4. Supprimer des "
@@ -39,16 +39,16 @@ if __name__ == "__main__":
             response = "oui"
             while response.lower() == "oui":
                 libelle = input("Entrer le nom de l'aliment: ")
-                food_type = input("Entrer le type de l'aliment: ")
-                nutriscore = input("Entrer le nutriscore de l'aliment: ")
+                food_type = input("Entrer le type de l'aliment (fruit, vegetable, dairy product, meat, fish, drink, "
+                                  "fat, sweet product, salt) : ")
+                nutriscore = input("Entrer le nutriscore de l'aliment (A, B, C, D, E) : ")
                 origin = input("Entrer l'origine de l'aliment: ")
                 caloric = int(input("Entrer le nombre de calorie de l'aliment: "))
                 nutritional_values = {}
                 name_nutritional = ["proteine", "lipides", "glucide", "fibre"]
                 for name in name_nutritional:
                     values = input("Entrer la valeur nutritive " + name + " de l'aliment: ")
-
-                    nutritional_values[name] = values
+                    nutritional_values[name] = int(values)
                 expiration_date = input("Entrer la date de péremption (format AAAA-MM-DD): ")
                 food = Food(libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
                 fridge = Fridge({}, libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
