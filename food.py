@@ -108,10 +108,10 @@ class Food(ExpirationDate):
         """
 
         return f"Information about the food : \n\n" \
-            f"{self.get_lib()}\n"\
-            f"{self.get_type()}\n" \
-            f"{self.get_nutriscore()}\n" \
-            f"{self.get_origin()}\n" \
-            f"{self.get_caloric()}\n"\
-            f"{self.get_nutritional_values()}\n" \
-            f"Expire on {self.expiration_date} and {self.time_count()} day(s) left."
+               f"{self.get_lib()}\n" \
+               f"{self.get_type()}\n" \
+               f"{self.get_nutriscore()}\n" \
+               f"{self.get_origin()}\n" \
+               f"{self.get_caloric()}\n" \
+               f"{self.get_nutritional_values()}\n" \
+               f"Expire on {self.expiration_date} and {self.time_count()} day(s) left."
