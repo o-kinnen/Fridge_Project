@@ -110,4 +110,3 @@ class Student:
                   f"Weight : {self.__weight}\n"
 
         return student
-

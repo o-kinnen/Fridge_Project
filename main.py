@@ -100,4 +100,3 @@ if __name__ == "__main__":
             break
         else:
             print("Choose a number between 1 and 8")
-
