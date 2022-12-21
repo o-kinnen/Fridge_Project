@@ -9,7 +9,8 @@ class Fridge(Food):
         This class allows the student to check the contents of the fridge
         """
 
-    def __init__(self, students: dict, libelle: str, food_type: str, nutriscore: str, origin: str, caloric: int, nutritional_values: dict, expiration_date: str):
+    def __init__(self, students: dict, libelle: str, food_type: str, nutriscore: str, origin: str, caloric: int,
+                 nutritional_values: dict, expiration_date : str):
         """This builds a food's fridge by some students, libelle, food_type, nutriscore, origin, nutritional_values and expiration_date
 
                 PRE : - Object type string : libelle, food_type, nutriscore, origin and expiration_date
@@ -17,7 +18,7 @@ class Fridge(Food):
                       - Object type dict : students, nutritional_values
                 POST : /
         """
-        self.content = {}
+        self.content = []
         self.students = students
         super().__init__(libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
 
@@ -27,7 +28,7 @@ class Fridge(Food):
                 PRE : /
                 POST : - String that represents the contents of the fridge
         """
-        if self.content == {}:
+        if not self.content:
             return f"The fridge is currently empty"
         else:
             return f"There are {self.content} in the fridge currently."
@@ -42,3 +43,6 @@ class Fridge(Food):
             return f"There are zero students"
         else:
             return f"The students who share the fridge are {self.students}."
+
+    def add_food(self):
+        self.content.append(self.libelle)
