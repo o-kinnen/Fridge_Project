@@ -1,3 +1,4 @@
+
 class Student:
     """Class representing a student in a flat.
 
@@ -26,8 +27,11 @@ class Student:
         PRE : /
         POST : String which represents the lastname of the student.
         """
-        if len(self.__firstname) == 0:
-            return "SYNTAX ERROR : PLEASE WRITE A LASTNAME !"
+        if type(self.__lastname) == str:
+            if len(self.__lastname) == 0:
+                return "SYNTAX ERROR : PLEASE WRITE A LASTNAME !"
+            else:
+                return self.__lastname
         else:
             return self.__lastname
 
@@ -37,8 +41,11 @@ class Student:
         PRE : /
         POST : String which represents the firstname of the student.
         """
-        if len(self.__firstname) == 0:
-            return "SYNTAX ERROR : PLEASE WRITE A FIRSTNAME !"
+        if type(self.__firstname) == str:
+            if len(self.__firstname) == 0:
+                return "SYNTAX ERROR : PLEASE WRITE A FIRSTNAME !"
+            else:
+                return self.__firstname
         else:
             return self.__firstname
 
@@ -48,10 +55,13 @@ class Student:
         PRE : /
         POST : Int which represents the weight of the student.
         """
-        if self.__weight <= 0:
-            return -1
+        if type(self.__weight) == int:
+            if self.__weight <= 0:
+                return -1
+            else:
+                return int(self.__weight)
         else:
-            return int(self.__weight)
+            return self.__weight
 
     def get_height(self):
         """Return a representation of the height of the student.
@@ -59,10 +69,13 @@ class Student:
         PRE : /
         POST : Integer which represents the height of the student.
         """
-        if self.__height <= 0:
-            return -1
+        if type(self.__height) == int:
+            if self.__height <= 0:
+                return -1
+            else:
+                return int(self.__height)
         else:
-            return int(self.__height)
+            return self.__height
 
     def get_age(self):
         """Return a representation of the age of the student.
@@ -70,12 +83,15 @@ class Student:
         PRE : /
         POST : Integer which represents the age of the student
         """
-        if self.__age <= 0:
-            return -1
-        if len(str(self.__age)) > 2:
-            return -1
+        if type(self.__age) == int:
+            if self.__age <= 0:
+                return -1
+            if len(str(self.__age)) > 2:
+                return -1
+            else:
+                return int(self.__age)
         else:
-            return int(self.__age)
+            return self.__age
 
     def get_sex(self):
         """Return the textual representation of the gender of the student.
