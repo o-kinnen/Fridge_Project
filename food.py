@@ -6,7 +6,7 @@ class Food(ExpirationDate):
 
     Author : Anthony IV.
     Date : December 2022.
-    This class allows the student to encode the information of a food.
+    This class allows the student to encode the information of food.
     """
 
     def __init__(self, libelle: str, food_type: str, nutriscore: str, origin: str,
@@ -99,7 +99,7 @@ class Food(ExpirationDate):
         for i in self.__nutritional_values:
             if self.__nutritional_values[i] < 0:
                 return "ERROR."
-        return self.__nutritional_values
+        return f"Nutritional value {self.__nutritional_values}"
 
     def __str__(self):
         """Return a textual representation of the food.
@@ -108,10 +108,10 @@ class Food(ExpirationDate):
         """
 
         return f"Information about the food : \n\n" \
-            f"{self.get_lib()}\n"\
-            f"{self.get_type()}\n" \
-            f"{self.get_nutriscore()}\n" \
-            f"{self.get_origin()}\n" \
-            f"{self.get_caloric()}\n"\
-            f"{self.get_nutritional_values()}\n" \
-            f"Expire on {self.expiration_date} and {self.time_count()} day(s) left."
+               f"{self.get_lib()}\n" \
+               f"{self.get_type()}\n" \
+               f"{self.get_nutriscore()}\n" \
+               f"{self.get_origin()}\n" \
+               f"{self.get_caloric()}\n" \
+               f"{self.get_nutritional_values()}\n" \
+               f"Expire on {self.expiration_date} and {self.time_count()} day(s) left."
