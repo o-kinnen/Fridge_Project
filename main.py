@@ -26,7 +26,7 @@ if __name__ == "__main__":
             height = int(input("Enter your height (in cm): "))
             age = int(input("Enter your age: "))
             gender = input("Enter your gender (F or M): ")
-            diet = input("Enter your diet (carnivorous, omnivorous, vegetarian, vegan): ")
+            diet = input("Enter your diet (carnivorous, omnivorous, vegetarian, vegetalian, vegan): ")
             allergy = input("Enter your possible allergies: ")
 
             food_profile = FoodProfile(firstname, lastname, diet, gender, age, weight, height, allergy)
