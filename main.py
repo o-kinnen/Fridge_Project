@@ -1,7 +1,10 @@
 from foodProfile import *
 from fridge import *
+from interface import FridgeApp
 from recipe import *
 import argparse
+from kivy.config import Config
+
 
 parser = argparse.ArgumentParser = argparse.ArgumentParser(
     description="Simulation of a virtual fridge for students living in a kot.")
@@ -34,11 +37,13 @@ if __name__ == "__main__":
             print(food_profile)
 
         elif choice == "2":
+            Config.set('graphics', 'width', '700')
+            Config.set('graphics', 'height', '500')
             if not food_profiles:
                 print("No food profile was encoded.")
             else:
                 for profile in food_profiles:
-                    print(profile)
+                    FridgeApp().run()
 
         elif choice == "3":
             if not fridge:
