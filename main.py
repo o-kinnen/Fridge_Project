@@ -20,7 +20,7 @@ class ProfileApp(App):
         self.title = "Food Profile of the student"
         profile_box = BoxLayout(orientation="vertical")
 
-        # Informations du profil alimentaire encodés
+        # Informations du profil alimentaire encodé
         name_label = Label(text=f"Name : {food_profile.get_firstname()} {food_profile.get_lastname()}")
         sex_label = Label(text=f"Sex : {food_profile.get_sex()}")
         age_label = Label(text=f"Age : {food_profile.get_age()}")
@@ -41,6 +41,33 @@ class ProfileApp(App):
         profile_box.add_widget(daily_needed_calories_label)
 
         return profile_box
+
+
+class FoodApp(App):
+
+    def build(self):
+        self.title = "Information about the food"
+        food_box = BoxLayout(orientation="vertical")
+
+        # Informations de l'aliment encodé
+        libelle_label = Label(text=food.get_lib())
+        food_type_label = Label(text=food.get_type())
+        nutriscore_label = Label(text=food.get_nutriscore())
+        origin_label = Label(text=food.get_origin())
+        caloric_label = Label(text=food.get_caloric())
+        nutritional_values_label = Label(text=food.get_nutritional_values())
+        expiration_date_label = Label(text=f"Expire on {food.expiration_date} and {food.time_count()} day(s) left.")
+
+        # Ajout des infos dans la boîte profile_box
+        food_box.add_widget(libelle_label)
+        food_box.add_widget(food_type_label)
+        food_box.add_widget(nutriscore_label)
+        food_box.add_widget(origin_label)
+        food_box.add_widget(caloric_label)
+        food_box.add_widget(nutritional_values_label)
+        food_box.add_widget(expiration_date_label)
+
+        return food_box
 
 
 if __name__ == "__main__":
@@ -79,7 +106,7 @@ if __name__ == "__main__":
             ProfileApp().run()
 
         elif choice == "2":
-            # Visualisation des profils alimentaires encodés
+            # Profils alimentaires encodés
             if not food_profiles:
                 print("No food profile was encoded.")
             else:
@@ -87,7 +114,7 @@ if __name__ == "__main__":
                     print(profile)
 
         elif choice == "3":
-            # Visualisation du contenu du frigo
+            # Contenu du frigo
             if not fridge:
                 print("The fridge is empty.")
             else:
@@ -112,8 +139,10 @@ if __name__ == "__main__":
 
             # Création de l'aliment
             food = Food(libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
-            print(food)
             fridge.append(food)
+
+            # Visualisation des informations de l'aliment
+            FoodApp().run()
 
         elif choice == "5":
             print("In Progress")
@@ -142,7 +171,7 @@ if __name__ == "__main__":
             print(recipe)
 
         elif choice == "7":
-            # Visualisation des recettes encodées
+            # Recettes encodées
             if not recipes:
                 print("No recipes have yet been encoded.")
             else:
