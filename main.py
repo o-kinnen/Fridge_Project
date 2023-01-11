@@ -1,28 +1,67 @@
-from foodProfile import *
-from fridge import *
-from interface import FridgeApp
-from recipe import *
 import argparse
-from kivy.config import Config
 
+from fridge import *
+from recipe import *
+from foodProfile import *
+
+from kivy.app import App
+from kivy.config import Config
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 
 parser = argparse.ArgumentParser = argparse.ArgumentParser(
     description="Simulation of a virtual fridge for students living in a kot.")
 args = parser.parse_args()
 
+
+class ProfileApp(App):
+
+    def build(self):
+        self.title = "Food Profile of the student"
+        profile_box = BoxLayout(orientation="vertical")
+
+        # Informations du profil alimentaire encodés
+        name_label = Label(text=f"Name : {food_profile.get_firstname()} {food_profile.get_lastname()}")
+        sex_label = Label(text=f"Sex : {food_profile.get_sex()}")
+        age_label = Label(text=f"Age : {food_profile.get_age()}")
+        height_label = Label(text=f"Height : {food_profile.get_height()}")
+        diet_label = Label(text=f"Diet : {food_profile.get_diet()}")
+        allergy_label = Label(text=f"Allergy : {food_profile.allergy()}")
+        imc_label = Label(text=f"IMC : {food_profile.imc()}")
+        daily_needed_calories_label = Label(text=f"Daily Needed Calories : {food_profile.daily_needed_calories()}")
+
+        # Ajout des infos dans la boîte profile_box
+        profile_box.add_widget(name_label)
+        profile_box.add_widget(sex_label)
+        profile_box.add_widget(age_label)
+        profile_box.add_widget(height_label)
+        profile_box.add_widget(diet_label)
+        profile_box.add_widget(allergy_label)
+        profile_box.add_widget(imc_label)
+        profile_box.add_widget(daily_needed_calories_label)
+
+        return profile_box
+
+
 if __name__ == "__main__":
+
+    # Initialisation des valeurs et de la fenêtre
     fridge = []
     student = []
     recipes = []
     ingredients = {}
     food_profiles = []
+    Config.set('graphics', 'width', '700')
+    Config.set('graphics', 'height', '500')
+
+    # Début du lancement du programme
     while True:
         print("1. Encode your food profile.\n2. View Food Profiles.\n3. See the fridge.\n4. Add foods.\n5. Remove "
               "foods.\n6. Encode a recipe.\n7. History of recipes.\n8. Quit.")
 
         choice = input("What do you want to do? (type the number): ")
-
         if choice == "1":
+            # Demande des informations de l'utilisateur
             lastname = input("Enter your name: ")
             firstname = input("Enter your first name: ")
             weight = int(input("Enter your weight: "))
@@ -32,20 +71,23 @@ if __name__ == "__main__":
             diet = input("Enter your diet (carnivorous, omnivorous, vegetarian, vegetalian, vegan): ")
             allergy = input("Enter your possible allergies: ")
 
+            # Création du profil alimentaire
             food_profile = FoodProfile(firstname, lastname, diet, gender, age, weight, height, allergy)
             food_profiles.append(food_profile)
-            print(food_profile)
+
+            # Visualisation du profil alimentaire
+            ProfileApp().run()
 
         elif choice == "2":
-            Config.set('graphics', 'width', '700')
-            Config.set('graphics', 'height', '500')
+            # Visualisation des profils alimentaires encodés
             if not food_profiles:
                 print("No food profile was encoded.")
             else:
                 for profile in food_profiles:
-                    FridgeApp().run()
+                    print(profile)
 
         elif choice == "3":
+            # Visualisation du contenu du frigo
             if not fridge:
                 print("The fridge is empty.")
             else:
@@ -53,6 +95,7 @@ if __name__ == "__main__":
                     print(food)
 
         elif choice == "4":
+            # Demande des informations d'un aliment à mettre dans le frigo
             libelle = input("Enter the name of the food: ")
             food_type = input("Enter the type of food (fruit or vegetable or dairy product or meat or"
                               " fish or drink or fat or sweet product or salt): ")
@@ -67,6 +110,7 @@ if __name__ == "__main__":
                 values = int(input("Enter Nutrition Facts " + name + " of the food: "))
                 nutritional_values[name] = values
 
+            # Création de l'aliment
             food = Food(libelle, food_type, nutriscore, origin, caloric, nutritional_values, expiration_date)
             print(food)
             fridge.append(food)
@@ -76,6 +120,7 @@ if __name__ == "__main__":
             pass
 
         elif choice == "6":
+            # Demande des informations d'une recette
             response_libelle = "yes"
             response_ingredient = "yes"
             libelle = input("Enter the recipe name: ")
@@ -90,17 +135,21 @@ if __name__ == "__main__":
                 student.append(student_name)
                 response_libelle = input("Do you want to add a student? "
                                          "(if yes: type yes/if no: press another key) ")
+
+            # Création de la recette
             recipe = Recipe(libelle, ingredients, student)
             recipes.append(recipe)
             print(recipe)
 
         elif choice == "7":
+            # Visualisation des recettes encodées
             if not recipes:
                 print("No recipes have yet been encoded.")
             else:
                 for recipe in recipes:
                     print(recipe)
         elif choice == "8":
+            # Quitter le programme
             print("Thank you for using our program !")
             break
         else:
