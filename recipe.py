@@ -41,7 +41,7 @@ class Recipe:
     def get_ing(self):
         return self.ingredients
 
-    def student(self):
+    def get_student(self):
         return self.student
 
     def check_inside(self, food: str):
