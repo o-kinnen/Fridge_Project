@@ -70,6 +70,24 @@ class FoodApp(App):
         return food_box
 
 
+class RecipeApp(App):
+    def build(self):
+        self.title = "Recipe"
+        recipe_box = BoxLayout(orientation="vertical")
+
+        # Informations de la recette encodée
+        libelle_label = Label(text=f"Information about the recipe {recipe.get_lib()}")
+        ingredients_label = Label(text=f"Ingredients : {recipe.get_ing()}")
+        students_label = Label(text=f"Student(s) : {recipe.get_student()}")
+
+        # Ajout des infos dans la boîte recipe_box
+        recipe_box.add_widget(libelle_label)
+        recipe_box.add_widget(ingredients_label)
+        recipe_box.add_widget(students_label)
+
+        return recipe_box
+
+
 if __name__ == "__main__":
 
     # Initialisation des valeurs et de la fenêtre
@@ -168,7 +186,7 @@ if __name__ == "__main__":
             # Création de la recette
             recipe = Recipe(libelle, ingredients, student)
             recipes.append(recipe)
-            print(recipe)
+            RecipeApp().run()
 
         elif choice == "7":
             # Recettes encodées
