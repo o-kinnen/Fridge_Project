@@ -165,18 +165,17 @@ if __name__ == "__main__":
         elif choice == "5":
             # Retirer un aliment du frigo
             response_food = "yes"
-            food_qty = 1
             while response_food.lower() == "yes":
+                food_qty = 1
                 libelle = input("Enter the name of the food: ")
-                for elem in range(len(fridge) - 1):
+                for elem in range(len(fridge)):
                     if fridge[elem].get_lib().lower() == libelle.lower() and food_qty == 1:
                         del(fridge[elem])
                         food_qty = 0
                 if food_qty == 0:
                     print("The food has been removed from the fridge.")
-                else:
+                if food_qty == 1:
                     print("The food is not in the fridge.")
-                    food_qty = 1
                 response_food = input("Do you want to take another food ? "
                                       "(if yes: enter yes/if no: press another key) ")
 
@@ -190,6 +189,7 @@ if __name__ == "__main__":
                 ingredient_qty = int(input("Enter the required quantity: "))
                 ingredients[ingredient_name] = ingredient_qty
                 response_ingredient = input("Do you want to add an ingredient? "
+                     
                                             "(if yes: enter yes/if no: press another key) ")
             while response_libelle.lower() == "yes":
                 student_name = input("Enter the name of the student who can make the recipe: ")
