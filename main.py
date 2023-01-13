@@ -50,7 +50,7 @@ class FoodApp(App):
         food_box = BoxLayout(orientation="vertical")
 
         # Informations de l'aliment encodé
-        libelle_label = Label(text=food.get_lib())
+        libelle_label = Label(text=f"Name of the food : {food.get_lib()}.")
         food_type_label = Label(text=food.get_type())
         nutriscore_label = Label(text=food.get_nutriscore())
         origin_label = Label(text=food.get_origin())
@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     # Début du lancement du programme
     while True:
-        print("1. Encode your food profile.\n2. View Food Profiles.\n3. See the fridge.\n4. Add foods.\n5. Remove "
+        print("1. Encode your food profile.\n2. View Food Profiles.\n3. See the fridge.\n4. Add foods.\n5. Take "
               "foods.\n6. Encode a recipe.\n7. History of recipes.\n8. Quit.")
 
         choice = input("What do you want to do? (type the number): ")
@@ -163,8 +163,22 @@ if __name__ == "__main__":
             FoodApp().run()
 
         elif choice == "5":
-            print("In Progress")
-            pass
+            # Retirer un aliment du frigo
+            response_food = "yes"
+            food_qty = 1
+            while response_food.lower() == "yes":
+                libelle = input("Enter the name of the food: ")
+                for elem in range(len(fridge) - 1):
+                    if fridge[elem].get_lib().lower() == libelle.lower() and food_qty == 1:
+                        del(fridge[elem])
+                        food_qty = 0
+                if food_qty == 0:
+                    print("The food has been removed from the fridge.")
+                else:
+                    print("The food is not in the fridge.")
+                    food_qty = 1
+                response_food = input("Do you want to take another food ? "
+                                      "(if yes: enter yes/if no: press another key) ")
 
         elif choice == "6":
             # Demande des informations d'une recette

@@ -35,13 +35,7 @@ class Food(ExpirationDate):
         ExpirationDate.__init__(self, expiration_date)
 
     def get_lib(self):
-        """Returns a textual representation of the food name.
-
-                PRE : /
-                POST : String which represents the name of the food.
-        """
-
-        return f"Name of the food : {self.__libelle}."
+        return self.__libelle
 
     def get_type(self):
         """Returns a representation of the type of food.
@@ -108,7 +102,7 @@ class Food(ExpirationDate):
         """
 
         return f"Information about the food : \n\n" \
-               f"{self.get_lib()}\n" \
+               f"Name of the food : {self.get_lib()}\n" \
                f"{self.get_type()}\n" \
                f"{self.get_nutriscore()}\n" \
                f"{self.get_origin()}\n" \
