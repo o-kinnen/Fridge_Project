@@ -155,3 +155,4 @@ class Food(ExpirationDate):
                f"Caloric value of the food : {self.get_caloric()}\n" \
                f"{self.get_nutritional_values()}\n" \
                f"Expire on {self.expiration_date} and {self.time_count()} day(s) left."
+
