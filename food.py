@@ -1,12 +1,36 @@
 from expiration_date import ExpirationDate
 
 
+class TypeError(Exception):
+    pass
+
+
+class LibelleError(Exception):
+    pass
+
+
+class NutriscoreError(Exception):
+    pass
+
+
+class FoodTypeError(Exception):
+    pass
+
+
+class CaloricError(Exception):
+    pass
+
+
+class NutritionalValuesError(Exception):
+    pass
+
+
 class Food(ExpirationDate):
     """Class representing the food.
 
     Author : Anthony IV.
     Date : December 2022.
-    This class allows the student to encode the information of food.
+    This class allows the student to encode the information of a food.
     """
 
     def __init__(self, libelle: str, food_type: str, nutriscore: str, origin: str,
@@ -25,6 +49,8 @@ class Food(ExpirationDate):
                        - SyntaxError if caloric is not an integer.
                        - SyntaxError if nutritional_values is not a dictionary.
         """
+        if type(origin) != str:
+            raise TypeError
 
         self.__libelle = libelle
         self.__food_type = food_type
@@ -41,7 +67,10 @@ class Food(ExpirationDate):
                 POST : String which represents the name of the food.
         """
 
-        return f"Name of the food : {self.__libelle}."
+        if self.__libelle == "":
+            raise LibelleError
+        else:
+            return self.__libelle
 
     def get_type(self):
         """Returns a representation of the type of food.
@@ -49,14 +78,15 @@ class Food(ExpirationDate):
                 POST : - If string in type_food_list : string that represents the type of food.
                        - If not : string error that tells the student to choose the right type of food.
         """
+        if type(self.__food_type) != str:
+            raise TypeError
 
         type_food_list = ["FRUIT", "VEGETABLE", "DAIRY PRODUCT", "MEAT", "FISH", "DRINK", "FAT", "SWEET PRODUCT",
                           "SALT"]
         if self.__food_type.upper() in type_food_list:
-            return f"Type of food : {self.__food_type}."
+            return self.__food_type.lower()
         else:
-            return "ERROR : Choose between fruit, vegetable, dairy product, meat, fish, drink, fat, sweet product or " \
-                   "salt. "
+            raise FoodTypeError
 
     def get_nutriscore(self):
         """Returns a representation of the food's nutriscore.
@@ -64,12 +94,14 @@ class Food(ExpirationDate):
                 POST : - If string in nutriscore_list : string that represents the nutriscore of the food.
                        - If not : string error that tells the student to choose a valid nutriscore.
         """
+        if type(self.__nutriscore) != str:
+            raise TypeError
 
         nutriscore_list = ["A", "B", "C", "D", "E"]
         if self.__nutriscore.upper() in nutriscore_list:
-            return f"Nutriscore : {self.__nutriscore}."
+            return self.__nutriscore.upper()
         else:
-            return "ERROR : Choose between A, B, C, D or E."
+            raise NutriscoreError
 
     def get_origin(self):
         """Returns a representation of the origin of the food.
@@ -77,41 +109,49 @@ class Food(ExpirationDate):
                 POST : - String that represents the origin of the food.
         """
 
-        return f"The origin of the food : {self.__origin}."
+        return self.__origin
 
     def get_caloric(self):
         """Returns a caloric representation of the food.
                 PRE : /
                 POST : - String that represents the caloric content of the food.
         """
+        if type(self.__caloric) != int:
+            raise TypeError
 
-        if self.__caloric < 0:
-            return "ERROR, please enter a positive value."
+        if 0 < self.__caloric < 1000:
+            return self.__caloric
         else:
-            return f"Caloric value of the food : {self.__caloric}."
+            raise CaloricError
 
     def get_nutritional_values(self):
         """Returns a representation of the nutritional values of the food.
                 PRE : /
                 POST : - Dictionary representing the nutritional values of the food.
         """
+        if type(self.__nutritional_values) != dict:
+            raise TypeError
+
+        for values in self.__nutritional_values.values():
+            if type(values) != int:
+                raise TypeError
 
         for i in self.__nutritional_values:
-            if self.__nutritional_values[i] < 0:
-                return "ERROR."
-        return f"Nutritional value {self.__nutritional_values}"
+            if self.__nutritional_values[i] <= 0 or self.__nutritional_values[i] > 1000:
+                raise NutritionalValuesError
+
+        return self.__nutritional_values
 
     def __str__(self):
         """Return a textual representation of the food.
                PRE : /
                POST : String that represents the information of the food.
         """
-
         return f"Information about the food : \n\n" \
-               f"{self.get_lib()}\n" \
-               f"{self.get_type()}\n" \
-               f"{self.get_nutriscore()}\n" \
-               f"{self.get_origin()}\n" \
-               f"{self.get_caloric()}\n" \
+               f"Name of the food : {self.get_lib()}\n" \
+               f"Type of food : {self.get_type()}\n" \
+               f"Nutriscore : {self.get_nutriscore()}\n" \
+               f"The origin of the food : {self.get_origin()}\n" \
+               f"Caloric value of the food : {self.get_caloric()}\n" \
                f"{self.get_nutritional_values()}\n" \
                f"Expire on {self.expiration_date} and {self.time_count()} day(s) left."
