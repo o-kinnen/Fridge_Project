@@ -172,12 +172,12 @@ if __name__ == "__main__":
                     if fridge[elem].get_lib().lower() == libelle.lower() and food_qty == 1:
                         del(fridge[elem])
                         food_qty = 0
-                if food_qty == 0:
-                    print("The food has been removed from the fridge.")
-                if food_qty == 1:
-                    print("The food is not in the fridge.")
                 response_food = input("Do you want to take another food ? "
                                       "(if yes: enter yes/if no: press another key) ")
+            if food_qty == 0:
+                print("The food has been removed from the fridge.")
+            if food_qty == 1:
+                print("The food is not in the fridge.")
 
         elif choice == "6":
             # Demande des informations d'une recette
